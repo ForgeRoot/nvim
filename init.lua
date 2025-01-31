@@ -1,4 +1,3 @@
-
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'morhetz/gruvbox'
@@ -32,4 +31,21 @@ vim.opt.expandtab = true	-- Use spaces instead of tabs
 vim.opt.shiftwidth = 2		-- Number of spaces to use for auto-indent
 vim.opt.smartindent = true	-- Auto-indent based on previous line
 vim.opt.wrap = false		-- Don't wrap lines
+
+-- Make the mouse copy pasting into the Windows Clipt using Win32Yank
+vim.opt.mouse= "a"
+vim.opt.clipboard= "unnamedplus"
+vim.g.clipboard = {
+  name = 'win32yank',
+  copy = {
+    ["+"] = "/mnt/c/Windows/System32/win32yank.exe -i --crlf",
+    ["*"] = "/mnt/c/Windows/System32/win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "/mnt/c/Windows/System32/win32yank.exe -o --lf",
+    ["*"] = "/mnt/c/Windows/System32/win32yank.exe -o --lf",
+  },
+  cache_enabled = 0,
+}
+
 vim.cmd('colorscheme gruvbox')
